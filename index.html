@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <title>Mon premier TP Javascript</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>Formulaire de renseignements</h1>
+        <form>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Renseignez votre profil
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="civility" id="civilityMr" value="0"> Monsieur
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="civility" id="civilityMrs" value="1"> Madame
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-group" for="name">Nom de famille</label>
+                        <input class="form-control" type="text" id="name" name="name" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-group" for="firstName">Prénom</label>
+                        <input class="form-control" type="text" id="firstName" name="firstName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-group">Date de naissance</label>
+                        <input onkeyup="isDay(this)" type="text" id="birthDay" name="birthDay" maxlength="2" size="2" />
+                        <select name="birthMonth" id="birthMonth"></select>
+                        <input onkeyup="isNumber(this)" type="text" name="birthYear" id="birthYear" minlength="4" maxlength="4" size="4" />
+                    </div>
+
+                    <input onclick="displayAndSavePerson()" type="button" class="btn btn-primary" value="Envoyer" />
+                </div>
+                <div class="panel-footer">
+                    <div id="helloText"></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
