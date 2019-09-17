@@ -1,57 +1,39 @@
 init();
 
-// Initialisation de la page
+/**
+ * @function
+ * @description Initialise de la page
+ */
 function init() {
     fillBirthMonthSelect();
     retrievePersonFromLocalStorage();
 }
 
-// Afficher le texte dans le footer et sauvegarder les informations dans le localStorage
-function displayAndSavePerson() {
-    var person = createPerson();
-    displayPerson(person);
-    savePersonInLocalStorage(person);
-}
-
-/* Déclenché sur l'événement onKeyUp du champs Année
- * Vérifie que la valeur saisie est un nombre. Si ce n'est pas le cas, réinitialisation du champs
+/**
+ * @function
+ * @description Remplit le select des mois de naissance
  */
-function isNumber(input) {
-    if (isNaN(input.value)) {
-        input.value = null;
-    }
-}
-
-/* Déclenché sur l'événement onKeyUp du champs Jour
- * Vérifier que la valeur saisie est un nombre et un jour (entre 1 et 31)
- */
-function isDay(input) {
-    isNumber(input);
-
-    if (input.value < 1 || input.value > 31) {
-        input.value = null;
-    }
-}
-
-// Remplir le select des mois de naissance
 function fillBirthMonthSelect() {
-    var birthMonth = document.getElementById('birthMonth'); // Récupération du champs "Mois de naissance"
     var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
 
-    // Remplissage du champs "Mois de naissance" à l'aide du tableau
+    // Remplissage du champs "Mois de naissance" à l'aide du tableau ci-dessus
     for (var i = 0; i < months.length; i++) {
         var option = document.createElement("option");
         option.value = i;
         option.text = months[i];
 
+        var birthMonth = document.getElementById('birthMonth');
         birthMonth.add(option);
     }
 }
 
-// Récupérer le contenu du localStorage s'il existe
+/**
+ * @function
+ * @description Récupère le contenu du localStorage s'il existe
+ */
 function retrievePersonFromLocalStorage() {
-    if (localStorage['person']) {
-        var person = JSON.parse(localStorage['person']);
+    if (localStorage.person) {
+        var person = JSON.parse(localStorage.person);
 
         document.querySelector('input[name="civility"][value="' + person.civility.id + '"]').checked = true; // Renseigner la civilité        
         document.getElementById('name').value = person.name; // Renseigner le nom        
@@ -65,7 +47,42 @@ function retrievePersonFromLocalStorage() {
     }
 }
 
-// Créer un personne en fonction des champs de saisie
+/**
+ * @event
+ * @description Vérifie que la valeur saisie est un nombre
+ */
+function isNumber(input) {
+    if (isNaN(input.value)) {
+        input.value = null;
+    }
+}
+
+/**
+ * @event
+ * @description Vérifie que la valeur saisie est un jour compris entre 1 et 31
+ */
+function isDay(input) {
+    isNumber(input);
+
+    if (input.value < 1 || input.value > 31) {
+        input.value = null;
+    }
+}
+
+/**
+ * @event
+ * @description Affiche le texte dans le bas de page et sauvegarde les informations dans le localStorage
+ */
+function displayAndSavePerson() {
+    var person = createPerson();
+    displayPerson(person);
+    savePersonInLocalStorage(person);
+}
+
+/**
+ * @function
+ * @description Crée et retourne une personne
+ */
 function createPerson() {
     // Récupération de la civilité
     var civilityInput = document.querySelector('input[name="civility"]:checked');
@@ -96,10 +113,10 @@ function createPerson() {
     return person;
 }
 
-/* Le texte affiché est : Bonjour {civilité} {nom} {prénom}
- * Exemples :
- * Bonjour Monsieur Jean Dupont
- * Bonjour Madame Claire Dubois
+/**
+ * @function
+ * @description Affiche les informations de la personne dans le bas de page
+ * @param {Object} person Personne
  */
 function displayPerson(person) {
     // Récupération du div "helloText", puis affichage du texte
@@ -115,10 +132,12 @@ function displayPerson(person) {
     }
 
     message += ' <strong>' + person.civility.label + ' ' + person.name + ' ' + person.firstName + '</strong>';
+
+    // Le texte affiché est : Bonjour {civilité} {nom} {prénom}
     helloTextDiv.innerHTML = message;
 }
 
 // Sauvegarde les informations de la personne dans le localStorage
 function savePersonInLocalStorage(person) {
-    localStorage['person'] = JSON.stringify(person);
+    localStorage.person = JSON.stringify(person);
 }
