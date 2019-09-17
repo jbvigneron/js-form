@@ -1,31 +1,27 @@
 # TP Javascript n°1 - Promo UDEV EPSI Arras
 ## Formulaire de renseignements
 
-1. Créer une page HTML
+1. Créez une page HTML appelée index.html
+2. Ajoutez-y un formulaire contenant un champs de saisie « Entrez votre prénom » et un bouton « Envoyer »
+3. Quand l’utilisateur clique sur le bouton Envoyer, afficher ensuite une boîte de dialogue « Bonjour {prénom} » (utilisez la fonction alert())
 
-2. Créer un formulaire avec un champs : Nom de famille
-3. Créer un bouton Envoyer
+4. Ajouter un champs « Entrez votre nom » et quand l’utilisateur clique sur le bouton Envoyer, le message suivant apparaîtra : « Bonjour {prénom} {nom} »
 
-4. Intégrer Bootstrap => https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css
+5. Intégrer Bootstrap pour rendre votre site plus stylisé https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css
 
-5. Afficher une boîte de dialogue 'Bonjour {nom}' après clic sur le bouton Envoyer
-6. Ajouter un champs Prénom et l'afficher dans la boîte de dialogue
-7. Afficher le message dans la page directement (footer) et non plus dans la boîte de dialogue (innerHTML)
+6. Ajoutez la question « Civilité » avec 2 boutons radio « Monsieur » et « Madame »
+7. Quand l’utilisateur clique sur le bouton Envoyer, le message suivant apparaîtra : « Bonjour {Monsieur/Madame} {prénom} {nom} »
 
-8. Ajouter 2 radio buttons pour la civilité
-9. Récupérer la civilité et l'afficher dans le message (Conditions et boucles)
+8. Retirez la fonction alert() et affichez directement le message dans la page, en dessous du formulaire
+9. Demandez la date de naissance :
+- Jour et Année seront des champs à saisir par l’utilisateur
+- Mois sera un menu déroulant (select) rempli dynamiquement Javascript avec les mois de 1 à 12
+- Sur les champs Jour et Année, ajoutez une fonction permettant de vérifier que la valeur saisie est bien numérique
 
-10. Demander la date de naissance :
-- Jour : input
-- Mois : select (à faire remplir par le Javascript)
-- Année : input
+10. Récupérez la langue du navigateur et changer le message en fonction : Bonjour ou Hello)
 
-11. Sur les champs Jour et Année, ajouter une fonction permettant de vérifier que la valeur saisie est bien de type numérique (isNaN)
-
-12. Récupérer la langue du navigateur et changer le message en fonction (Bonjour ou Hello)
-
-13. Ecrire un objet dans le localStorage avec les informations de l'utilisateur
-14. Récupérer la valeur dans le localStorage et afficher les informations sauvegardées
+11. Quand l’utilisateur clique sur le bouton Envoyer, stockez les informations au sein du localStorage
+12. Au chargement de la page, si des informations sont contenues dans le localStorage, les récupérer puis les afficher
 
 Autres :
 - Utiliser la console du navigateur
